@@ -6,7 +6,7 @@ export class MinuitActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["minuit", "sheet", "actor"],
       template: "systems/minuit/templates/actor/actor-sheet.html",
       width: 600,
@@ -73,7 +73,7 @@ export class MinuitActorSheet extends ActorSheet {
       const li = $(ev.currentTarget).parents(".item");
       let value = $(ev.currentTarget).is(":checked");
       
-      let item = duplicate(this.actor.getEmbeddedDocument("Item", li.data("itemId")));
+      let item = foundry.utils.duplicate(this.actor.getEmbeddedDocument("Item", li.data("itemId")));
 
       item.system.coche = value;
 
@@ -98,7 +98,7 @@ export class MinuitActorSheet extends ActorSheet {
     const header = event.currentTarget;
 
     const type = header.dataset.type;
-    const system = duplicate(header.dataset);
+    const system = foundry.utils.duplicate(header.dataset);
 
     let typeName = this.getTypeName(type);
     const name = game.i18n.format("MINUIT.Common.new_item", {item: typeName});
