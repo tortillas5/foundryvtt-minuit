@@ -107,7 +107,6 @@
   align-items: center;
   text-align: center;
   padding: 5px;
-  background-color: #e5e5e7;
 }
 
 .flex-group-left {
@@ -152,23 +151,8 @@
 }
 
 .minuit .sheet-header {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 210px;
-  flex: 0 0 210px;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  margin-bottom: 10px;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 
 .minuit .sheet-header .profile-img {
@@ -188,16 +172,22 @@
 }
 
 .minuit .sheet-header h1.charname {
-  height: 50px;
-  padding: 0px;
+  height: auto;
+  min-height: 50px;
   margin: 5px 0;
-  border-bottom: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .minuit .sheet-header h1.charname input {
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 50px;
   margin: 0;
+  line-height: 1.1;
+  padding: 6px 8px;
+  box-sizing: border-box;
 }
 
 .minuit .sheet-tabs {
@@ -206,10 +196,24 @@
   flex: 0;
 }
 
-.minuit .sheet-body,
-.minuit .sheet-body .tab,
-.minuit .sheet-body .tab .editor {
-  height: 100%;
+.minuit .window-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.minuit,
+.minuit form,
+.minuit [data-application-part="sheet"] {
+  min-height: 0;
+}
+
+.minuit [data-application-part="sheet"] {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 }
 
 .minuit .tox .tox-editor-container {
@@ -225,6 +229,61 @@
   -ms-flex: 1 1 100px;
   flex: 1 1 100px;
   letter-spacing: 0.1em;
+}
+
+.minuit .sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.minuit .sheet-body .tab {
+  display: none;
+  height: 100%;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 8px;
+}
+
+.minuit .sheet-body .tab.active {
+  display: block;
+}
+
+.minuit .sheet-body .tab .editor {
+  min-height: 0;
+}
+
+.minuit .row-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minuit .row-flex h2 {
+  margin: 0;
+  font-family: "Unica One", serif;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.minuit .row-flex ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.minuit .row-flex li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.minuit .row-flex textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  box-sizing: border-box;
 }
 
 .minuit .sheet-body ul {
@@ -307,6 +366,14 @@
   height: auto;
 }
 
+.minuit .sheet-body .tab {
+  display: none;
+}
+
+.minuit .sheet-body .tab.active {
+  display: block;
+}
+
 .minuit .tabs {
   height: 40px;
   border-top: 1px solid #AAA;
@@ -355,13 +422,14 @@
 }
 
 .minuit .items-list .item-name {
+  flex: 1;
+  min-width: 0;
+  width: auto;
   margin: 0;
   font-family: "Roboto", sans-serif;
   cursor: pointer;
-  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 483px;
   overflow: hidden;
   display: block;
   height: 30px;

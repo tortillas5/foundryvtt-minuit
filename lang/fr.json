@@ -106,5 +106,9 @@
     "MINUIT.Messages.particularite_usage_out_of_adrenaline": "<p>Pas assez d'adrénaline.</p>",
     "MINUIT.Messages.particularite_usage_added_adrenaline": "<p>Ajout de {value} points d'adrénaline.</p>",
     "MINUIT.Messages.particularite_usage_used_adrenaline": "<p>Consommation de {value} points adrénaline.</p>",
-    "MINUIT.Messages.dice_throw": "Jet de {aspect}"
+    "MINUIT.Messages.dice_throw": "Jet de {aspect}",
+
+    "TYPES.Actor.221b-baker-street": "221B Baker Street",
+    "TYPES.Actor.character": "Personnage",
+    "TYPES.Actor.directrice": "Directrice"
 }

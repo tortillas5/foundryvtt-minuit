@@ -106,5 +106,9 @@
     "MINUIT.Messages.particularite_usage_out_of_adrenaline": "<p>Not enough adrenaline.</p>",
     "MINUIT.Messages.particularite_usage_added_adrenaline": "<p>Added {value} adrenaline points.</p>",
     "MINUIT.Messages.particularite_usage_used_adrenaline": "<p>Consumption of {value} adrenaline points.</p>",
-    "MINUIT.Messages.dice_throw": "{aspect} throw"
+    "MINUIT.Messages.dice_throw": "{aspect} throw",
+
+    "TYPES.Actor.221b-baker-street": "221B Baker Street",
+    "TYPES.Actor.character": "Character",
+    "TYPES.Actor.directrice": "Directress"
 }
