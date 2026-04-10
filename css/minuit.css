@@ -30,7 +30,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-.rollable:hover, .rollable:focus, .use-particularite:hover, .use-particularite:focus {
+.rollable:hover, .rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
@@ -312,8 +312,8 @@
 
 .minuit .sheet-body input[data-dtype="Number"] {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 20px;
-  flex: 0 0 20px;
+  -ms-flex: 0 0 35px;
+  flex: 0 0 35px;
   text-align: center;
 }
 
@@ -333,8 +333,8 @@
   border: none;
   border-bottom: 1px solid #242021;
   border-radius: 0px;
-  background-color: #e5e5e7;
-  line-height: 24px;
+  line-height: 30px;
+  padding: 0px 5px;
 }
 
 .minuit .sheet-body .expertise-valeurs input[data-dtype="String"] {
