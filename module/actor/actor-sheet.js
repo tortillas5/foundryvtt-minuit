@@ -26,8 +26,6 @@ export class MinuitActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       itemCreate: MinuitActorSheet._onItemCreate,
       itemEdit: MinuitActorSheet._onItemEdit,
       itemDelete: MinuitActorSheet._onItemDelete,
-      tensionPlus: MinuitActorSheet._onTensionPlus,
-      tensionMinus: MinuitActorSheet._onTensionMinus,
       coche: MinuitActorSheet._onCoche,
       roll: MinuitActorSheet._onRoll,
     },
@@ -101,24 +99,6 @@ export class MinuitActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const itemId = target.closest("[data-item-id]")?.dataset.itemId ?? target.dataset.itemId;
     await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
-  }
-
-  /**
-   * Incrémenter la tension.
-   */
-  static async _onTensionPlus(event, target) {
-    event.preventDefault();
-    const tension = this.actor.system.tension + 1;
-    await this.actor.update({ "system.tension": tension });
-  }
-
-  /**
-   * Décrémenter la tension.
-   */
-  static async _onTensionMinus(event, target) {
-    event.preventDefault();
-    const tension = this.actor.system.tension - 1;
-    await this.actor.update({ "system.tension": tension });
   }
 
   /**
