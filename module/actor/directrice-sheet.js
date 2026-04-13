@@ -12,8 +12,8 @@ export class MinuitDirectriceActorSheet extends MinuitActorSheet {
    */
   static DEFAULT_OPTIONS = {
     actions: {
-      tensionPlus: MinuitDirectriceActorSheet._onTensionPlus,
-      tensionMinus: MinuitDirectriceActorSheet._onTensionMinus,
+      tensionPlus: this._onTensionPlus,
+      tensionMinus: this._onTensionMinus,
     },
   };
 

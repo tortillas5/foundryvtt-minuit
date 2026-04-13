@@ -20,4 +20,28 @@ export class Minuit221bActorSheet extends MinuitActorSheet {
   tabGroups = {
     primary: "description",
   };
+
+  /**
+   * Configuration.
+   * 
+   * @override
+   */
+  static DEFAULT_OPTIONS = {
+    actions: {
+      coche: this._onCoche,
+    },
+  };
+
+  /**
+   * Cocher / décocher un item.
+   * Dans le HTML : <input type="checkbox" data-action="coche" data-item-id="...">
+   */
+  static async _onCoche(event, target) {
+    const itemId = target.closest("[data-item-id]")?.dataset.itemId ?? target.dataset.itemId;
+    const item   = foundry.utils.duplicate(
+      this.actor.getEmbeddedDocument("Item", itemId)
+    );
+    item.system.coche = target.checked;
+    await this.actor.updateEmbeddedDocuments("Item", [item]);
+  }
 }

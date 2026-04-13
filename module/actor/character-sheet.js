@@ -28,9 +28,38 @@ export class MinuitCharacterActorSheet extends MinuitActorSheet {
    */
   static DEFAULT_OPTIONS = {
     actions: {
-      useParticularity: MinuitCharacterActorSheet._onUseParticularity,
+      useParticularity: this._onUseParticularity,
+      roll: this._onRoll,
     },
   };
+
+    /**
+   * Lancer les dés.
+   * Dans le HTML : <a data-action="roll" data-roll="2d6" data-label="agilite">
+   */
+  static async _onRoll(event, target) {
+    event.preventDefault();
+    const dataset = target.dataset;
+
+    if (!dataset.roll) return;
+
+    let rollFormula = dataset.roll;
+    if (rollFormula.toLowerCase().includes("p")) {
+      const puissance = this.actor.system.aspects.puissance.value;
+      rollFormula     = rollFormula.toLowerCase().replace("p", puissance);
+    }
+
+    const roll       = new Roll(rollFormula, this.actor.system);
+    const aspectName = dataset.label ? this.getAspectName(dataset.label) : "";
+    const label      = dataset.label
+      ? game.i18n.format("MINUIT.Messages.dice_throw", { aspect: aspectName }).capitalize()
+      : "";
+
+    await roll.toMessage({
+      flavor:  label,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    });
+  }
 
     /**
    * Utiliser une particularité.
@@ -78,5 +107,20 @@ export class MinuitCharacterActorSheet extends MinuitActorSheet {
       flavor:  game.i18n.localize("MINUIT.Messages.particularite_usage"),
       content: message,
     });
+  }
+
+  getAspectName(aspect) {
+    const key = {
+      agilite:    "MINUIT.Aspects.agilite",
+      perception: "MINUIT.Aspects.perception",
+      puissance:  "MINUIT.Aspects.puissance",
+      reflexion:  "MINUIT.Aspects.reflexion",
+    }[aspect];
+
+    if (!key) {
+      throw new Error("This aspect does not exist.");
+    }
+
+    return game.i18n.localize(key);
   }
 }
