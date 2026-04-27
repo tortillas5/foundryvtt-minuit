@@ -14,18 +14,8 @@
             </div>
         </div>
     </header>
-    <section class="sheet-body">
-        <div class="resources flex">
-            <div class="resource flex-group-left situation">
-                <h2>{{localize "MINUIT.Directrice.notes"}}</h2>
-            </div>
-        </div>
-        <div class="resources flex">
-            <div class="resource flex-group-center situation" style="width: 100%;">
-                <div class="resource-content flexrow flex-center flex-between">
-                    <textarea name="system.notes" rows="20" title="{{localize "MINUIT.Directrice.notes"}}" data-dtype="String">{{actor.system.notes}}</textarea>
-                </div>
-            </div>
-        </div>
+    <section class="sheet-body directrice-body">
+        <h2>{{localize "MINUIT.Directrice.notes"}}</h2>
+        <textarea class="notes-textarea" name="system.notes" title="{{localize "MINUIT.Directrice.notes"}}" data-dtype="String">{{actor.system.notes}}</textarea>
     </section>
 </div>

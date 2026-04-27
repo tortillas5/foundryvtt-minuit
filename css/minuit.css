@@ -538,12 +538,17 @@
   padding-bottom: 10px;
 }
 
-.minuit.actor .notes-body,
-.minuit.actor .notes-body .resource,
-.minuit.actor .notes-body .resource-content {
-  flex: 1;
+.minuit.actor .directrice-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+
+.minuit.actor textarea.notes-textarea {
+  flex: 1 1 auto;
+  height: auto;
   min-height: 0;
-  width: 100%;
 }
 
 button.tension {
