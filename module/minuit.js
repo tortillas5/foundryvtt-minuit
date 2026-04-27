@@ -24,10 +24,6 @@ Hooks.once('init', async function() {
   CONFIG.Actor.documentClass = MinuitActor;
   CONFIG.Item.documentClass = MinuitItem;
 
-  // Unregister default sheets.
-  DocumentSheetConfig.unregisterSheet(Actor, "core", foundry.appv1.sheets.ActorSheet);
-  DocumentSheetConfig.unregisterSheet(Item, "core", foundry.appv1.sheets.ItemSheet);
-
   //#region Register minuit sheets
 
   // Actors
