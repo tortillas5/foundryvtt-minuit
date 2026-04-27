@@ -265,6 +265,12 @@
   min-height: 0;
 }
 
+.minuit .sheet-body h2 {
+  color: #242021;
+  font-family: "Unica One", serif;
+  text-shadow: none;
+}
+
 .minuit .row-flex {
   display: flex;
   flex-direction: column;
