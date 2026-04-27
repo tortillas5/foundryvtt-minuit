@@ -46,6 +46,6 @@
   "primaryTokenAttribute": "vie",
   "secondaryTokenAttribute": "adrenaline",
   "url": "https://github.com/tortillas5/foundryvtt-minuit",
-  "manifest": "https://github.com/tortillas5/foundryvtt-minuit/releases/latest/system.json",
-  "download": "https://github.com/tortillas5/foundryvtt-minuit/releases/latest/system.zip"
+  "manifest": "https://github.com/tortillas5/foundryvtt-minuit/releases/latest/download/system.json",
+  "download": "https://github.com/tortillas5/foundryvtt-minuit/releases/latest/download/system.zip"
 }
