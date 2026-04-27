@@ -1,71 +1,54 @@
 /**
  * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
+ * @extends {ItemSheetV2}
  */
-export class MinuitItemSheet extends ItemSheet {
 
-  /** @override */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["minuit", "sheet", "item"],
+const { ItemSheetV2 } = foundry.applications.sheets;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+
+export class MinuitItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
+  /**
+   * Configuration.
+   * 
+   * @override
+   */
+  static DEFAULT_OPTIONS = {
+    classes: ["minuit", "sheet", "item"],
+    position: {
       width: 520,
       height: 480,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
-    });
-  }
+    },
+    window: {
+      resizable: true,
+    },
+    form: {
+      submitOnChange: true,
+    },
+  };
 
-  /** @override */
-  get template() {
-    const path = "systems/minuit/templates/item";
-    return `${path}/${this.item.type}-sheet.html`;
-  }
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
 
-  /* -------------------------------------------- */
+    context.item = this.item;
+    context.system = this.item.system;
 
-  /** @override */
-  getData(options) {
-    const data = super.getData(options);
-
-    if(this.item.type == "particularite"){
-      data.particulariteTypes = {
-        "force": game.i18n.localize("MINUIT.ParticulariteTypes.Force"),
-        "faiblesse": game.i18n.localize("MINUIT.ParticulariteTypes.Faiblesse"),
-      }
+    if (this.item.type === "particularite") {
+      context.particulariteTypes = {
+        force: game.i18n.localize("MINUIT.ParticulariteTypes.Force"),
+        faiblesse: game.i18n.localize("MINUIT.ParticulariteTypes.Faiblesse"),
+      };
     }
 
-    if(this.item.type == "contact"){
-      data.categorieInfluence = {
-        "informelle": game.i18n.localize("MINUIT.CategorieInfluence.informelle"),
-        "institutionnelle": game.i18n.localize("MINUIT.CategorieInfluence.institutionnelle"),
-        "intellectuelle": game.i18n.localize("MINUIT.CategorieInfluence.intellectuelle"),
-        "interlope": game.i18n.localize("MINUIT.CategorieInfluence.interlope"),
-        "paranaturelle": game.i18n.localize("MINUIT.CategorieInfluence.paranaturelle"),
-      }
+    if (this.item.type === "contact") {
+      context.categorieInfluence = {
+        informelle: game.i18n.localize("MINUIT.CategorieInfluence.informelle"),
+        institutionnelle: game.i18n.localize("MINUIT.CategorieInfluence.institutionnelle"),
+        intellectuelle: game.i18n.localize("MINUIT.CategorieInfluence.intellectuelle"),
+        interlope: game.i18n.localize("MINUIT.CategorieInfluence.interlope"),
+        paranaturelle: game.i18n.localize("MINUIT.CategorieInfluence.paranaturelle"),
+      };
     }
 
-    return data;
-  }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  setPosition(options = {}) {
-    const position = super.setPosition(options);
-    const sheetBody = this.element.find(".sheet-body");
-    const bodyHeight = position.height - 192;
-    sheetBody.css("height", bodyHeight);
-    return position;
-  }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
-
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-
-    // Roll handlers, click handlers, etc. would go here.
+    return context;
   }
 }
