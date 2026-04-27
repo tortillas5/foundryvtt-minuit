@@ -24,7 +24,7 @@
     <section class="sheet-body">
         <div class="tab active" data-group="primary" data-tab="description">
             <h2>{{localize "MINUIT.Particularite.description"}}</h2>
-            {{editor item.system.description target="system.description" button=true owner=owner editable=editable}}
+            <textarea name="system.description" rows="10" data-dtype="String" style="width: 100%;">{{item.system.description}}</textarea>
         </div>
     </section>
 </div>

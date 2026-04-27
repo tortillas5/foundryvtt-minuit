@@ -35,6 +35,7 @@ export class MinuitItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     context.item = this.item;
     context.system = this.item.system;
     context.owner = this.item.isOwner;
+    context.editable = this.isEditable;
     context.cssClass = this.isEditable ? "editable" : "locked";
 
     if (this.item.type === "particularite") {
