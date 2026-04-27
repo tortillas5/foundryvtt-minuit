@@ -261,6 +261,12 @@
   display: block;
 }
 
+.minuit.item .sheet-body .tab.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .minuit .sheet-body .tab .editor {
   min-height: 0;
 }
@@ -302,6 +308,15 @@
   width: 100%;
   min-height: 90px;
   resize: vertical;
+  box-sizing: border-box;
+}
+
+.minuit textarea.description-textarea,
+.minuit textarea.notes-textarea {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  resize: none;
   box-sizing: border-box;
 }
 
@@ -521,6 +536,14 @@
 
 .sheet-header.directrice-header {
   padding-bottom: 10px;
+}
+
+.minuit.actor .notes-body,
+.minuit.actor .notes-body .resource,
+.minuit.actor .notes-body .resource-content {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
 }
 
 button.tension {
