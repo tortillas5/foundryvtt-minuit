@@ -15,9 +15,10 @@
 :is(.window-app, .application) .window-content textarea {
   color: #242021;
   border: none;
-  border-bottom: 1px solid #242021;
+  /* border-bottom: 1px solid #242021; */
   border-radius: 0px;
   background-color: #e5e5e7;
+  height: 20px;
 }
 
 :is(.window-app, .application).sheet input[data-dtype="Number"] {
