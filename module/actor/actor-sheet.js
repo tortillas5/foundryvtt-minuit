@@ -42,6 +42,8 @@ export class MinuitActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     context.actor = this.actor;
     context.system = this.actor.system;
     context.items = this.actor.items;
+    context.owner = this.actor.isOwner;
+    context.cssClass = this.isEditable ? "editable" : "locked";
     context.dtypes = ["String", "Number", "Boolean"];
     context.tabs = this._prepareTabs("primary");
     return context;

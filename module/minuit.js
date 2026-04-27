@@ -13,6 +13,7 @@ import { MinuitParticulariteItemSheet } from "./item/particularite-sheet.js";
 import { MinuitPossessionItemSheet } from "./item/possession-sheet.js";
 
 Hooks.once('init', async function() {
+  const { DocumentSheetConfig } = foundry.applications.apps;
 
   game.minuit = {
     MinuitActor,
@@ -24,24 +25,24 @@ Hooks.once('init', async function() {
   CONFIG.Item.documentClass = MinuitItem;
 
   // Unregister default sheets.
-  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
-  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  DocumentSheetConfig.unregisterSheet(Actor, "core", foundry.appv1.sheets.ActorSheet);
+  DocumentSheetConfig.unregisterSheet(Item, "core", foundry.appv1.sheets.ItemSheet);
 
   //#region Register minuit sheets
 
   // Actors
-  foundry.documents.collections.Actors.registerSheet("minuit", MinuitActorSheet, { makeDefault: true });
-  foundry.documents.collections.Actors.registerSheet("minuit", Minuit221bActorSheet, { types: ["221b-baker-street"], makeDefault: true });
-  foundry.documents.collections.Actors.registerSheet("minuit", MinuitCharacterActorSheet, { types: ["character"], makeDefault: true });
-  foundry.documents.collections.Actors.registerSheet("minuit", MinuitDirectriceActorSheet, { types: ["directrice"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Actor, "minuit", MinuitActorSheet, { makeDefault: true });
+  DocumentSheetConfig.registerSheet(Actor, "minuit", Minuit221bActorSheet, { types: ["221b-baker-street"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Actor, "minuit", MinuitCharacterActorSheet, { types: ["character"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Actor, "minuit", MinuitDirectriceActorSheet, { types: ["directrice"], makeDefault: true });
 
   // Items
-  foundry.documents.collections.Items.registerSheet("minuit", MinuitItemSheet, { makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("minuit", MinuitArmeItemSheet, { types: ["arme"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("minuit", MinuitContactItemSheet, { types: ["contact"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("minuit", MinuitHistoriqueItemSheet, { types: ["historique"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("minuit", MinuitParticulariteItemSheet, { types: ["particularite"], makeDefault: true });
-  foundry.documents.collections.Items.registerSheet("minuit", MinuitPossessionItemSheet, { types: ["possession"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Item, "minuit", MinuitItemSheet, { makeDefault: true });
+  DocumentSheetConfig.registerSheet(Item, "minuit", MinuitArmeItemSheet, { types: ["arme"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Item, "minuit", MinuitContactItemSheet, { types: ["contact"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Item, "minuit", MinuitHistoriqueItemSheet, { types: ["historique"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Item, "minuit", MinuitParticulariteItemSheet, { types: ["particularite"], makeDefault: true });
+  DocumentSheetConfig.registerSheet(Item, "minuit", MinuitPossessionItemSheet, { types: ["possession"], makeDefault: true });
 
   //#endregion
 

@@ -1,16 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Unica+One&display=swap");
 /* Global styles */
-.window-app {
+:is(.window-app, .application) {
   font-family: "Roboto", sans-serif;
 }
 
-.window-app .window-content {
+:is(.window-app, .application) .window-content {
   background: url("../images/background.webp");
   background-size: cover;
 }
 
-.window-app .window-content input, .window-app .window-content textarea {
+:is(.window-app, .application) .window-content input,
+:is(.window-app, .application) .window-content textarea {
   color: #242021;
   border: none;
   border-bottom: 1px solid #242021;
@@ -18,15 +19,15 @@
   background-color: #e5e5e7;
 }
 
-.window-app.sheet input[data-dtype="Number"] {
+:is(.window-app, .application).sheet input[data-dtype="Number"] {
   background-color: #fff;
 }
 
-.window-app.sheet.minuit {
+:is(.window-app, .application).sheet.minuit {
   font-family: "Unica One", serif;
 }
 
-.window-app.sheet.minuit p {
+:is(.window-app, .application).sheet.minuit p {
   font-family: "Roboto", sans-serif;
 }
 
