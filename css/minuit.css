@@ -8,6 +8,7 @@
 :is(.window-app, .application) .window-content {
   background: url("../images/background.webp");
   background-size: cover;
+  color: #242021;
 }
 
 :is(.window-app, .application) .window-content input,
@@ -25,6 +26,7 @@
 
 :is(.window-app, .application).sheet.minuit {
   font-family: "Unica One", serif;
+  color: #242021;
 }
 
 :is(.window-app, .application).sheet.minuit p {
@@ -207,6 +209,7 @@
   flex-direction: column;
   overflow: hidden;
   padding: 0;
+  color: #242021;
 }
 
 .minuit,
@@ -220,6 +223,7 @@
   flex-direction: column;
   flex: 1;
   overflow: hidden;
+  color: #242021;
 }
 
 .minuit .tox .tox-editor-container {
@@ -235,6 +239,7 @@
   -ms-flex: 1 1 100px;
   flex: 1 1 100px;
   letter-spacing: 0.1em;
+  color: #3d3330;
 }
 
 .minuit .sheet-body {
@@ -270,6 +275,7 @@
   font-family: "Unica One", serif;
   font-size: 28px;
   line-height: 1.1;
+  color: #242021;
 }
 
 .minuit .row-flex ul {
@@ -307,6 +313,7 @@
   font-size: 15px;
   margin-top: 6px;
   display: inline-block;
+  color: #3d3330;
 }
 
 .minuit .sheet-body .expertise-name {
@@ -314,6 +321,7 @@
   font-size: 16px;
   margin-top: 10px;
   display: inline-block;
+  color: #3d3330;
 }
 
 .minuit .sheet-body input[data-dtype="Number"] {
@@ -357,6 +365,7 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  color: #5a4432;
 }
 
 .minuit .resource select {
@@ -391,10 +400,12 @@
   font-weight: bold;
   font-size: 16px;
   letter-spacing: 0.1em;
+  color: #6d5845;
+  text-shadow: none;
 }
 
 .minuit .tabs .item.active {
-  color: #e69d16;
+  color: #b76500;
   text-shadow: none;
 }
 
@@ -407,6 +418,7 @@
 
 .minuit .items-list .item-header {
   font-weight: bold;
+  color: #5a4432;
 }
 
 .minuit .items-list .item {
@@ -414,6 +426,7 @@
   line-height: 24px;
   padding: 3px 0;
   border-bottom: 1px solid #BBB;
+  color: #242021;
 }
 
 .minuit .items-list .item .item-image {
@@ -433,6 +446,7 @@
   width: auto;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  color: #242021;
   cursor: pointer;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -450,6 +464,15 @@
   -ms-flex: 0 0 100px;
   flex: 0 0 100px;
   text-align: right;
+  color: #6d5845;
+}
+
+.minuit .items-list .item-controls a,
+.minuit .items-list .item-controls span,
+.minuit .item-control,
+.minuit .rollable {
+  color: #6d5845;
+  text-shadow: none;
 }
 
 .minuit .items-list .item-categorie {
