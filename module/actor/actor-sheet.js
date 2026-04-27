@@ -23,6 +23,7 @@ export class MinuitActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       resizable: true,
     },
     actions: {
+      editImage: this._onEditImage,
       itemCreate: this._onItemCreate,
       itemEdit: this._onItemEdit,
       itemDelete: this._onItemDelete,
@@ -52,6 +53,30 @@ export class MinuitActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _preparePartContext(partId, context) {
     if (context.tabs?.[partId]) context.tab = context.tabs[partId];
     return context;
+  }
+
+  /**
+   * Open a FilePicker and update the edited image path.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target L'image portant data-action et data-edit
+   */
+  static _onEditImage(event, target) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+
+    const path = target.dataset.edit;
+    if (!path) return;
+
+    const current = foundry.utils.getProperty(this.document, path) ?? target.getAttribute("src") ?? "";
+    const FilePicker = foundry.applications.apps.FilePicker.implementation;
+
+    new FilePicker({
+      type: "image",
+      current,
+      field: target,
+      button: target,
+      callback: selected => this.document.update({ [path]: selected }),
+    }).render(true);
   }
 
   /**

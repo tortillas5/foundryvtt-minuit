@@ -21,6 +21,9 @@ export class MinuitItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     window: {
       resizable: true,
     },
+    actions: {
+      editImage: this._onEditImage,
+    },
     form: {
       submitOnChange: true,
     },
@@ -52,5 +55,29 @@ export class MinuitItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     }
 
     return context;
+  }
+
+  /**
+   * Open a FilePicker and update the edited image path.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target L'image portant data-action et data-edit
+   */
+  static _onEditImage(event, target) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+
+    const path = target.dataset.edit;
+    if (!path) return;
+
+    const current = foundry.utils.getProperty(this.document, path) ?? target.getAttribute("src") ?? "";
+    const FilePicker = foundry.applications.apps.FilePicker.implementation;
+
+    new FilePicker({
+      type: "image",
+      current,
+      field: target,
+      button: target,
+      callback: selected => this.document.update({ [path]: selected }),
+    }).render(true);
   }
 }
