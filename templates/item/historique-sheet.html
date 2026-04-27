@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}} flexcol">
     <header class="sheet-header">
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
@@ -9,7 +9,7 @@
     <section class="sheet-body">
         <div class="tab active" data-group="primary" data-tab="description">
             <h2>{{localize "MINUIT.Historique.description"}}</h2>
-            {{editor item.system.description target="system.description" button=true owner=owner editable=editable}}
+            <textarea class="description-textarea" name="system.description" data-dtype="String">{{item.system.description}}</textarea>
         </div>
     </section>
-</form>
+</div>

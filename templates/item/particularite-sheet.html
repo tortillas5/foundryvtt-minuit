@@ -1,6 +1,6 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}} flexcol">
     <header class="sheet-header">
-        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}"/>
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
             <div class="grid grid-2col">
@@ -24,7 +24,7 @@
     <section class="sheet-body">
         <div class="tab active" data-group="primary" data-tab="description">
             <h2>{{localize "MINUIT.Particularite.description"}}</h2>
-            {{editor item.system.description target="system.description" button=true owner=owner editable=editable}}
+            <textarea class="description-textarea" name="system.description" data-dtype="String">{{item.system.description}}</textarea>
         </div>
     </section>
-</form>
+</div>
