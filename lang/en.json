@@ -110,5 +110,11 @@
 
     "TYPES.Actor.221b-baker-street": "221B Baker Street",
     "TYPES.Actor.character": "Character",
-    "TYPES.Actor.directrice": "Directress"
+    "TYPES.Actor.directrice": "Directress",
+
+    "TYPES.Item.particularite": "Peculiarity",
+    "TYPES.Item.arme": "Weapon",
+    "TYPES.Item.possession": "Possession",
+    "TYPES.Item.historique": "Historic",
+    "TYPES.Item.contact": "Contact"
 }
