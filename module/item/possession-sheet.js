@@ -2,6 +2,9 @@ import { MinuitItemSheet } from "./item-sheet.js";
 
 export class MinuitPossessionItemSheet extends MinuitItemSheet {
   static PARTS = {
-    sheet: { template: "systems/minuit/templates/item/possession-sheet.html" }
+    sheet: {
+      template: "systems/minuit/templates/item/possession-sheet.html",
+      scrollable: [".sheet-body"],
+    },
   };
 }

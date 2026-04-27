@@ -2,7 +2,10 @@ import { MinuitActorSheet } from "./actor-sheet.js";
 
 export class Minuit221bActorSheet extends MinuitActorSheet {
   static PARTS = {
-    sheet: { template: "systems/minuit/templates/actor/221b-baker-street-sheet.html" }
+    sheet: {
+      template: "systems/minuit/templates/actor/221b-baker-street-sheet.html",
+      scrollable: [".sheet-body .tab.active"],
+    },
   };
 
   static TABS = {
