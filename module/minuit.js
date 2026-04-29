@@ -11,6 +11,16 @@ import { MinuitContactItemSheet } from "./item/contact-sheet.js";
 import { MinuitHistoriqueItemSheet } from "./item/historique-sheet.js";
 import { MinuitParticulariteItemSheet } from "./item/particularite-sheet.js";
 import { MinuitPossessionItemSheet } from "./item/possession-sheet.js";
+import {
+  Minuit221bData,
+  MinuitArmeData,
+  MinuitCharacterData,
+  MinuitContactData,
+  MinuitDirectriceData,
+  MinuitHistoriqueData,
+  MinuitParticulariteData,
+  MinuitPossessionData
+} from "./data-models.js";
 
 Hooks.once('init', async function() {
   const { DocumentSheetConfig } = foundry.applications.apps;
@@ -23,6 +33,17 @@ Hooks.once('init', async function() {
   // Define custom Entity classes
   CONFIG.Actor.documentClass = MinuitActor;
   CONFIG.Item.documentClass = MinuitItem;
+
+  // Define system data models.
+  CONFIG.Actor.dataModels.character = MinuitCharacterData;
+  CONFIG.Actor.dataModels["221b-baker-street"] = Minuit221bData;
+  CONFIG.Actor.dataModels.directrice = MinuitDirectriceData;
+
+  CONFIG.Item.dataModels.arme = MinuitArmeData;
+  CONFIG.Item.dataModels.particularite = MinuitParticulariteData;
+  CONFIG.Item.dataModels.possession = MinuitPossessionData;
+  CONFIG.Item.dataModels.historique = MinuitHistoriqueData;
+  CONFIG.Item.dataModels.contact = MinuitContactData;
 
   //#region Register minuit sheets
 
