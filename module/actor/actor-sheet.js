@@ -95,10 +95,14 @@ export class MinuitActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     const name     = game.i18n.format("MINUIT.Common.new_item", { item: typeName });
 
     const itemData = { name, type, system };
+    delete itemData.system["action"];
 
     if (type === "particularite") {
       itemData.system.type = system.label;
       delete itemData.system["label"];
+    } else if (type === "contact") {
+      itemData.system.categorie = "informelle";
+      delete itemData.system["type"];
     } else {
       delete itemData.system["type"];
     }
